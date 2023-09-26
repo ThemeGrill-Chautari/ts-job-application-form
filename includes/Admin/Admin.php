@@ -34,7 +34,7 @@ class Admin {
 	 * @return void
 	 */
 	private function init_hooks() {
-		add_action( 'admin_menu', array( $this, 'job_application_form_menu' ), 68 );
+		add_action( 'admin_menu', array( $this, 'job_application_form_menu' ), 10 );
 	}
 
 	/**
@@ -48,7 +48,7 @@ class Admin {
 			'job-application-form',
 			array(
 				$this,
-				'ts_job_application_form_settings_page',
+				'ts_job_application_form_list_page',
 			), '', 56
 		);
 
@@ -61,14 +61,33 @@ class Admin {
 	 */
 	public function template_page_init() {
 		// Table display code here.
+
+		// Day 2
+		global $ts_job_application_table_list;
+
+		$ts_job_application_table_list = new ListTable();
+		$ts_job_application_table_list->process_actions();
+
+		// Add screen option.
+		add_screen_option(
+			'per_page',
+			array(
+				'default' => 20,
+				'option'  => 'ts_job_applications_per_page',
+			)
+		);
 	}
 
 	/**
-	 *  Init the Job Application Form Settings page.
+	 *  Init the Job Application Form List page.
 	 */
-	public function ts_job_application_form_settings_page() {
-		ob_start();
-		echo '<h1>Job Application Form Settings</h1>';
-		echo ob_get_clean();
+	public function ts_job_application_form_list_page() {
+		// ob_start();
+		// echo '<h1>Job Application Form Settings</h1>';
+		// echo ob_get_clean();
+
+		// Day 2
+		global $ts_job_application_table_list;
+		$ts_job_application_table_list->display_page();
 	}
 }
