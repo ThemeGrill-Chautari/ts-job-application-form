@@ -9,6 +9,7 @@
  * @version  1.0.0
  */
 
+
 if ( ! function_exists( 'job_application_form_compatibility' ) ) {
 
 	/**
@@ -43,6 +44,8 @@ if ( ! function_exists( 'job_application_form_compatibility' ) ) {
 			</div>
 			<?php
 		}
+
+
 		$message = ob_get_clean();
 
 		echo wp_kses_post( $message );

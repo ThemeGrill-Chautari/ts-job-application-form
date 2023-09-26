@@ -16,6 +16,7 @@
  * @package Job_Application_Form
  */
 
+
 /* It prevents public user to directly access your .php files through URL.
    If your file contains some I/O operations it can eventually be triggered (by an attacker)
    and this might cause unexpected behavior.
@@ -26,10 +27,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
 	require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+}else{
+
+	?>
+	<div class="notice notice-error">
+		<p>
+			<?php
+				echo __( 'Please add vendor file </strong> using composer to use <strong>Job Application Form</strong> Plugin.', 'ts-job-application-form' );
+			?>
+		</p>
+	</div>
+<?php
+
 }
 
 use JobApplicationForm\ApplicationForm;
-
+if(class_exists('JobApplicationForm\ApplicationForm')){
 /* Define the plugin version constant.
    It will be used throughout the plugin when needed
    */
@@ -50,3 +63,4 @@ function job_application_form() {
 }
 
 job_application_form();
+}
