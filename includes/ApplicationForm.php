@@ -9,6 +9,7 @@
 namespace JobApplicationForm;
 
 use JobApplicationForm\Admin\Admin;
+use JobApplicationForm\Shortcodes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -46,6 +47,15 @@ if ( ! class_exists( 'ApplicationForm' ) ) :
 		 */
 		public $admin = null;
 
+		// Day 2
+		/**
+		 * Shortcode class instance
+		 *
+		 * @var \Admin
+		 * @since 1.0.0
+		 */
+		public $shortcodes = null;
+
 		/**
 		 * Return an instance of this class
 		 *
@@ -82,6 +92,9 @@ if ( ! class_exists( 'ApplicationForm' ) ) :
 		public function includes() {
 			// Files to include.
 			$this->install = new Install();
+
+			// Day 2
+			$this->shortcodes = new Shortcodes();
 
 			// Class admin.
 			if ( $this->is_admin() ) {
@@ -129,3 +142,13 @@ if ( ! class_exists( 'ApplicationForm' ) ) :
 
 	}
 endif;
+
+/**
+ * Main instance of ApplicationForm.
+ *
+ * @since  1.0.0
+ * @return ApplicationForm
+ */
+function ApplicationForm() {
+	return ApplicationForm::get_instance();
+}
