@@ -90,6 +90,8 @@ class AJAX {
 			$applicant_data['address'] = sanitize_text_field( $_POST['user_address'] );
 		}
 
+		$applicant_data['submitted_at'] = current_datetime()->format( 'Y-m-d H:i:s' );
+
 		if ( ! empty( $error_message ) ) {
 			wp_send_json_error( array( 'field_error' => $error_message ) );
 		}
@@ -97,6 +99,11 @@ class AJAX {
 		$query_success = $wpdb->insert( 'wp_job_application_form', $applicant_data );
 
 		if ( $query_success ) {
+			$fullname = $applicant_data['first_name'] . ' ' . $applicant_data['last_name'];
+
+			//  Leave an action hook for after application submission.
+			do_action( 'ts_job_application_form_after_application_submission', $applicant_data['email'], $fullname );
+
 			wp_send_json_success(
 				array(
 					'message' => esc_html__( 'Application Submitted Successfully', 'ts-job-application-form' )

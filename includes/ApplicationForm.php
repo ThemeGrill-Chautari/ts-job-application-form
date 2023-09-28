@@ -139,7 +139,7 @@ if ( ! class_exists( 'ApplicationForm' ) ) :
 		 */
 		public function plugin_action_links( $actions ) {
 			$new_actions = array(
-				'settings' => '<a href="' . admin_url( 'admin.php?page=ts-job-application-form' ) . '" title="' . esc_attr( __( 'View Job Application Form Settings', 'ts-job-application-form' ) ) . '">' . __( 'Settings', 'ts-job-application-form' ) . '</a>',
+				'settings' => '<a href="' . admin_url( 'admin.php?page=job-application-form' ) . '" title="' . esc_attr( __( 'View Job Application Form Settings', 'ts-job-application-form' ) ) . '">' . __( 'Settings', 'ts-job-application-form' ) . '</a>',
 			);
 
 			return array_merge( $new_actions, $actions );

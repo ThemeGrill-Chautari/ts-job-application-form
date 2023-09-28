@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="ts-job-application-form-wrap">
 	<div id="alerts-box"></div>
 
-	<form id="ts-job-application-form" method="POST" enctype="multipart/form-data">
+	<form id="ts-job-application-form" method="POST">
 		<div class="ts-job-application-form-row">
 			<div class="ts-job-application-form-input-row tsja">
 				<label for="first_name" class="ts-job-application-form-label"><?php esc_html_e( 'First Name', 'ts-job-application-form' ); ?><span class="form-required">*</span></label>

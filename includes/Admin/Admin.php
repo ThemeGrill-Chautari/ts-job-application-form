@@ -24,6 +24,9 @@ class Admin {
 	public function __construct() {
 
 		$this->init_hooks();
+
+		// Day 4 - Set screens.
+		add_filter( 'set-screen-option', array( $this, 'set_screen_option' ), 10, 3 );
 	}
 
 	/**
@@ -76,6 +79,9 @@ class Admin {
 				'option'  => 'ts_job_applications_per_page',
 			)
 		);
+
+		do_action( 'template_page_init' );
+
 	}
 
 	/**
@@ -89,5 +95,20 @@ class Admin {
 		// Day 2
 		global $ts_job_application_table_list;
 		$ts_job_application_table_list->display_page();
+	}
+
+	/**
+	 * Validate screen options on update.
+	 *
+	 * @param mixed $status Status.
+	 * @param mixed $option Option.
+	 * @param mixed $value Value.
+	 */
+	public function set_screen_option( $status, $option, $value ) {
+		if ( in_array( $option, array( 'ts_job_applications_per_page' ), true ) ) {
+			return $value;
+		}
+
+		return $status;
 	}
 }
