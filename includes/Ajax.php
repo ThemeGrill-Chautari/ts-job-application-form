@@ -92,6 +92,23 @@ class AJAX {
 
 		$applicant_data['submitted_at'] = current_datetime()->format( 'Y-m-d H:i:s' );
 
+		// Day 5
+		if ( isset( $_FILES['user_file'] ) && $_FILES['user_file']['error'] === UPLOAD_ERR_OK ) {
+			$file = $_FILES['user_file'];
+
+			$upload_dir = wp_upload_dir();
+			$target_dir = $upload_dir['path'];
+			$target_file = $target_dir . '/' . basename($file['name']);
+
+			if ( move_uploaded_file($file['tmp_name'], $target_file) ) {
+				$applicant_data['cv'] = $upload_dir['url'] . '/' . basename($file['name']);
+			} else {
+				$error_message['user_file'] = esc_html__( 'Error uploading file.', 'ts-job-application-form' );
+			}
+		} else {
+			$error_message['user_file'] = esc_html__( 'Upload CV is a required field.', 'ts-job-application-form' );
+		}
+
 		if ( ! empty( $error_message ) ) {
 			wp_send_json_error( array( 'field_error' => $error_message ) );
 		}

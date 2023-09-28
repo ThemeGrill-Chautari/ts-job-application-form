@@ -136,8 +136,10 @@ class ListTable extends \WP_List_Table {
 			case 'email':
 			case 'phone':
 			case 'post_name':
+				return  $application[ $column_name ];
+				break;
 			case 'cv':
-				return $application[ $column_name ];
+				return '<a href="' . esc_url_raw( $application[ 'cv' ] ) . '" target="_blank" >' .  basename( ( $application[ 'cv' ] ) ) . '</a>';
 				break;
 			case 'date':
 				return $application[ 'submitted_at' ];

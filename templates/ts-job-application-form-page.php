@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="ts-job-application-form-wrap">
 	<div id="alerts-box"></div>
 
-	<form id="ts-job-application-form" method="POST">
+	<form id="ts-job-application-form" method="POST" enctype="multipart/form-data">
 		<div class="ts-job-application-form-row">
 			<div class="ts-job-application-form-input-row tsja">
 				<label for="first_name" class="ts-job-application-form-label"><?php esc_html_e( 'First Name', 'ts-job-application-form' ); ?><span class="form-required">*</span></label>
@@ -50,6 +50,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="ts-job-application-form-input-row">
 				<label for="post_name" class="ts-job-application-form-label"><?php esc_html_e( 'Applied Position', 'ts-job-application-form' ); ?><span class="form-required">*</span></label>
 				<input type="text" class="input-text ts-job-application-form-frontend-field" id="post_name" name="post_name" placeholder="<?php esc_html_e( 'Senior Software Engineer', 'ts-job-application-form' ); ?>" >
+			</div>
+		</div>
+		<div class="ts-job-application-form-row">
+			<div class="ts-job-application-form-input-row">
+				<label for="ts-job-application-form-user-file" class="ts-job-application-form-label"><?php esc_html_e( 'Upload CV', 'ts-job-application-form' ); ?><span class="form-required">*</span></label>
+				<input type="file" name="user_file" id="user_file" class="ts-job-application-form-user-file-upload-input" >
+				<!-- <input type="hidden" name="ts-job-application-form-file-input" id="ts-job-application-form-file-input"/> -->
 			</div>
 		</div>
 
