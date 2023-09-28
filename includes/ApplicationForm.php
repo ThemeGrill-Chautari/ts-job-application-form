@@ -10,6 +10,7 @@ namespace JobApplicationForm;
 
 use JobApplicationForm\Admin\Admin;
 use JobApplicationForm\Shortcodes;
+use JobApplicationForm\Ajax;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -56,6 +57,16 @@ if ( ! class_exists( 'ApplicationForm' ) ) :
 		 */
 		public $shortcodes = null;
 
+		// Day 3
+		/**
+		 * Ajax.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @var JobApplicationForm\Ajax;
+		 */
+		public $ajax = null;
+
 		/**
 		 * Return an instance of this class
 		 *
@@ -95,6 +106,9 @@ if ( ! class_exists( 'ApplicationForm' ) ) :
 
 			// Day 2
 			$this->shortcodes = new Shortcodes();
+
+			// Day 3
+			$this->ajax = new Ajax();
 
 			// Class admin.
 			if ( $this->is_admin() ) {

@@ -54,3 +54,29 @@ input[type=text], input[type=email], input[type=tel] {
     line-height: 1.5;
 	font: inherit;
 }
+
+.ts-job-application-form-error {
+    background: rgba(255,79,85,.1);
+	display: block;
+    margin: 0 0 10px;
+    padding: 10px 15px;
+    border-top: 3px solid #ff4f55;
+    list-style: none outside;
+    width: auto;
+    word-wrap: break-word;
+    line-height: 1.25;
+    text-transform: none;
+}
+
+.ts-job-application-form-success {
+	background: rgba(175,223,135,.1);
+	display: block;
+    margin: 0 0 10px;
+    padding: 10px 15px;
+    border-top: 3px solid #ACDF87;
+    list-style: none outside;
+    width: auto;
+    word-wrap: break-word;
+    line-height: 1.25;
+    text-transform: none;
+}

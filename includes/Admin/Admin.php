@@ -34,7 +34,7 @@ class Admin {
 	 * @return void
 	 */
 	private function init_hooks() {
-		add_action( 'admin_menu', array( $this, 'job_application_form_menu' ), 10 );
+		add_action( 'admin_menu', array( $this, 'job_application_form_menu' ), 68 );
 	}
 
 	/**

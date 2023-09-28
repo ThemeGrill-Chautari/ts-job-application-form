@@ -92,6 +92,7 @@ if ( ! class_exists( 'Install' ) ) :
 						ID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 						first_name varchar(255) NOT NULL,
 						last_name varchar(255) NOT NULL,
+						gender varchar(255) NOT NULL,
 						address varchar(255) NOT NULL,
 						email varchar(100) NOT NULL,
 						phone varchar(255) NOT NULL,
