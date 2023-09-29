@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Job Application Form Day 4
+ * Plugin Name: Job Application Form Day 5
  * Plugin URI: https://wprdpress.org/plugins
  * Description: Job Application Form Plugin For WordPress.
  * Version: 1.0.0

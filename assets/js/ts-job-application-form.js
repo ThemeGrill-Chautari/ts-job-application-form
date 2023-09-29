@@ -23,7 +23,7 @@ jQuery(document).ready(function ($) {
       processData: false,
       beforeSend: function () {
         $("#ts-job-application-form-submit-btn")
-          .text(
+          .html(
             ts_job_application_form_script_params.ts_job_application_form_submitting_button_text
           )
           .prop("disabled", true);
@@ -64,7 +64,7 @@ jQuery(document).ready(function ($) {
         }
 
         $("#ts-job-application-form-submit-btn")
-          .text(
+          .html(
             ts_job_application_form_script_params.ts_job_application_form_submit_button_text
           )
           .prop("disabled", false);

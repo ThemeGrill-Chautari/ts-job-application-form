@@ -40,6 +40,10 @@ body {
     outline: 0;
 }
 
+.ts-job-application-form-input-row #user_file {
+	margin-bottom: 10px;
+}
+
 input[type=text], input[type=email], input[type=tel] {
 	border-radius: 4px;
 	border: 1px solid #c0c4d4;

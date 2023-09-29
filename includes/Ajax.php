@@ -35,6 +35,8 @@ class AJAX {
 
 		add_action( 'wp_ajax_ts_job_application_form_submit_form', array( __CLASS__, 'submit_form' ) );
 		add_action('wp_ajax_nopriv_ts_job_application_form_submit_form', array( __CLASS__, 'submit_form' ) );
+
+		add_action( 'wp_ajax_ts_job_application_form_dashboard_widget', array( __CLASS__, 'dashboard_widget' ) );
 	}
 
 	/**
@@ -109,6 +111,7 @@ class AJAX {
 			$error_message['user_file'] = esc_html__( 'Upload CV is a required field.', 'ts-job-application-form' );
 		}
 
+
 		if ( ! empty( $error_message ) ) {
 			wp_send_json_error( array( 'field_error' => $error_message ) );
 		}
@@ -133,6 +136,26 @@ class AJAX {
 				)
 			);
 		}
+	}
+
+
+	/**
+	 * Dashboard Widget data.
+	 *
+	 */
+	public static function dashboard_widget() {
+		global $wpdb;
+
+		check_ajax_referer( 'dashboard-widget', 'security' );
+
+		$sql = "SELECT * FROM {$wpdb->prefix}job_application_form ORDER BY submitted_at DESC LIMIT 5";
+		$result = $wpdb->get_results( $sql, 'ARRAY_A' );
+
+		wp_send_json_success(
+			array(
+				'applications'       => $result,
+			)
+		); // WPCS: XSS OK.
 	}
 
 }

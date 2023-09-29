@@ -53,13 +53,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</div>
 		</div>
 		<div class="ts-job-application-form-row">
-			<div class="ts-job-application-form-input-row">
+		<div class="ts-job-application-form-input-row">
 				<label for="ts-job-application-form-user-file" class="ts-job-application-form-label"><?php esc_html_e( 'Upload CV', 'ts-job-application-form' ); ?><span class="form-required">*</span></label>
 				<input type="file" name="user_file" id="user_file" class="ts-job-application-form-user-file-upload-input" >
 				<!-- <input type="hidden" name="ts-job-application-form-file-input" id="ts-job-application-form-file-input"/> -->
 			</div>
 		</div>
-
 		<div class="ts-job-application-form-row">
 			<button type="submit" class="btn btn-primary" name="ts-job-application-form-submit" id="ts-job-application-form-submit-btn"><?php esc_html_e( 'Submit', 'ts-job-application-form' ); ?></button>
 		</div>

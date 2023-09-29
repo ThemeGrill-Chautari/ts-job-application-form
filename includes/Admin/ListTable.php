@@ -127,7 +127,13 @@ class ListTable extends \WP_List_Table {
 
 				$title = '<strong>' . $application['first_name'] . ' ' . $application['last_name']. '</strong>';
 				$actions = [
-					'delete' => sprintf( '<a href="?page=%s&action=%s&application=%s&_wpnonce=%s">'. esc_html__( "Delete", "ts-job-application-form" ) . '</a>', esc_attr( $_REQUEST['page'] ), 'delete', absint( $application['ID'] ), $delete_nonce )
+					'delete' => sprintf(
+						'<a href="?page=%s&action=%s&application=%s&_wpnonce=%s">'. esc_html__( "Delete", "ts-job-application-form" ) . '</a>',
+						 esc_attr( $_REQUEST['page'] ),
+						  'delete',
+						   absint( $application['ID'] ),
+						    $delete_nonce
+							 )
 				];
 				return $title . $this->row_actions( $actions );
 				break;
@@ -136,7 +142,7 @@ class ListTable extends \WP_List_Table {
 			case 'email':
 			case 'phone':
 			case 'post_name':
-				return  $application[ $column_name ];
+				return $application[ $column_name ];
 				break;
 			case 'cv':
 				return '<a href="' . esc_url_raw( $application[ 'cv' ] ) . '" target="_blank" >' .  basename( ( $application[ 'cv' ] ) ) . '</a>';

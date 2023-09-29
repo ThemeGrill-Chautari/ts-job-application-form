@@ -27,6 +27,9 @@ class Admin {
 
 		// Day 4 - Set screens.
 		add_filter( 'set-screen-option', array( $this, 'set_screen_option' ), 10, 3 );
+
+		add_action( 'wp_dashboard_setup', array( $this, 'ts_job_application_form_add_dashboard_widget' ) );
+
 	}
 
 	/**
@@ -38,6 +41,9 @@ class Admin {
 	 */
 	private function init_hooks() {
 		add_action( 'admin_menu', array( $this, 'job_application_form_menu' ), 68 );
+
+		wp_register_style( 'ts-job-application-form-dashboard-widget-style', TS_JOB_APPLICATION_FORM_ASSETS_URL . '/css/ts-job-application-form-dashboard.css', array(), TS_JOB_APPLICATION_FORM_VERSION );
+		wp_register_script( 'ts-job-application-form-dashboard-widget-js',TS_JOB_APPLICATION_FORM_ASSETS_URL . '/js/ts-job-application-form-dashboard.js', 'jquery', TS_JOB_APPLICATION_FORM_VERSION, false );
 	}
 
 	/**
@@ -110,5 +116,41 @@ class Admin {
 		}
 
 		return $status;
+	}
+
+
+	/**
+	 * Register the applications dashboard widget.
+	 *
+	 */
+	public function ts_job_application_form_add_dashboard_widget() {
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		wp_add_dashboard_widget( 'ts_job_application_form_latest_submissions', esc_html__( 'Latest Applications', 'ts-job-application-form' ), array( $this, 'ts_job_application_form_widget' ) );
+	}
+
+	/**
+	 * Content to the ts_job_application_form_widget widget.
+	 *
+	 */
+	public function ts_job_application_form_widget() {
+
+		wp_enqueue_script( 'ts-job-application-form-dashboard-widget-js' );
+		wp_enqueue_style( 'ts-job-application-form-dashboard-widget-style' );
+
+		wp_localize_script(
+			'ts-job-application-form-dashboard-widget-js',
+			'ts_job_application_form_widget_params',
+			array(
+				'ajax_url'     => admin_url( 'admin-ajax.php' ),
+				'loading'      => esc_html__( 'loading...', 'ts-job-application-form' ),
+				'widget_nonce' => wp_create_nonce( 'dashboard-widget' ),
+			)
+		);
+
+		include TS_JOB_APPLICATION_FORM_TEMPLATE_PATH . '/dashboard-widget.php';
 	}
 }
